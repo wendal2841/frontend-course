@@ -7,14 +7,266 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="task1">
-    <h3>Task 1</h3>
-    <p>Если а – четное посчитать а*б, иначе а+б.</p>
-    <input type="text" value="a" id="task1_value1"><br>
-    <input type="text" value="b" id="task1_value2"><br>
-    <input type="button" value="Calculate" onclick="task1(1)">
-    <p>Result:</p>
-    <div id="task1Result"></div>
+
+<div class="task task1">
+    <div class="task_content">
+        <h3>Task 1</h3>
+        <p>Если а – четное посчитать а*б, иначе а+б.</p>
+        <label for="task1_value1">a: </label><input type="text" id="task1_value1"><br>
+        <label for="task1_value2">b: </label><input type="text" id="task1_value2"><br>
+        <input type="button" value="Input" onclick="task1()">
+        <p>Result:</p>
+        <div class="result" id="task1Result"></div>
+    </div>
+</div>
+
+<div class="task task2">
+    <div class="task_content">
+        <h3>Task 2</h3>
+        <p>Определить какой четверти принадлежит точка с координатами (х,у).</p>
+        <label for="task2_value1">x: </label><input type="text" id="task2_value1"><br>
+        <label for="task2_value2">y: </label><input type="text" id="task2_value2"><br>
+        <input type="button" value="Input"  onclick="task2()">
+        <p>Result:</p>
+        <div class="result" id="task2Result"></div>
+    </div>
+</div>
+
+<div class="task task3">
+    <div class="task_content">
+        <h3>Task 3</h3>
+        <p>Найти суммы только положительных из трех чисел.</p>
+        <label for="task3_value1">a: </label><input type="text" id="task3_value1"><br>
+        <label for="task3_value2">b: </label><input type="text" id="task3_value2"><br>
+        <label for="task3_value3">c: </label><input type="text" id="task3_value3"><br>
+        <input type="button" value="Input"  onclick="task3()">
+        <p>Result:</p>
+        <div class="result" id="task3Result"></div>
+    </div>
+</div>
+
+<div class="task task4">
+    <div class="task_content">
+        <h3>Task 4</h3>
+        <p>Посчитать выражение макс(а*b*с, а+b+с)+3.</p>
+        <label for="task4_value1">a: </label><input type="text" id="task4_value1"><br>
+        <label for="task4_value2">b: </label><input type="text" id="task4_value2"><br>
+        <label for="task4_value3">c: </label><input type="text" id="task4_value3"><br>
+        <input type="button" value="Input"  onclick="task4()">
+        <p>Result:</p>
+        <div class="result" id="task4Result"></div>
+    </div>
+</div>
+
+<div class="task task5">
+    <div class="task_content">
+        <h3>Task 5</h3>
+        <p>Написать программу определения оценки студента по его рейтингу.</p>
+        <label for="task5_value1">a: </label><input type="text" id="task5_value1"><br>
+        <input type="button" value="Input"  onclick="task5()">
+        <p>Result:</p>
+        <div class="result" id="task5Result"></div>
+    </div>
+</div>
+
+<div class="task task6">
+    <div class="task_content">
+        <h3>Task 6</h3>
+        <p>Найти сумму четных чисел и их количество в диапазоне от 1 до 99.</p>
+        <input type="button" value="Input"  onclick="task6()">
+        <p>Result:</p>
+        <div class="result" id="task6Result"></div>
+    </div>
+</div>
+
+<div class="task task7">
+    <div class="task_content">
+        <h3>Task 7</h3>
+        <p>Проверить простое ли число.</p>
+        <label for="task7_value1">a: </label><input type="text" id="task7_value1"><br>
+        <input type="button" value="Input"  onclick="task7()">
+        <p>Result:</p>
+        <div class="result" id="task7Result"></div>
+    </div>
+</div>
+
+<div class="task task8">
+    <div class="task_content">
+        <h3>Task 8</h3>
+        <p>Найти корень натурального числа с точностью до целого.</p>
+        <label for="task8_value1">a: </label><input type="text" id="task8_value1"><br>
+        <input type="button" value="Input"  onclick="task8()">
+        <p>Result:</p>
+        <div class="result" id="task8Result"></div>
+    </div>
+</div>
+
+<div class="task task9">
+    <div class="task_content">
+        <h3>Task 9</h3>
+        <p>Вычислить факториал числа n. n! = 1*2*…*n-1*n.</p>
+        <label for="task9_value1">n: </label><input type="text" id="task9_value1"><br>
+        <input type="button" value="Input"  onclick="task9()">
+        <p>Result:</p>
+        <div class="result" id="task9Result"></div>
+    </div>
+</div>
+
+<div class="task task10">
+    <div class="task_content">
+        <h3>Task 10</h3>
+        <p>Посчитать сумму цифр заданного числа.</p>
+        <label for="task10_value1">n: </label><input type="text" id="task10_value1"><br>
+        <input type="button" value="Input"  onclick="task10()">
+        <p>Result:</p>
+        <div class="result" id="task10Result"></div>
+    </div>
+</div>
+
+<div class="task task11">
+    <div class="task_content">
+        <h3>Task 11</h3>
+        <p>Вывести число, которое является зеркальным отображением последовательности цифр заданного числа.</p>
+        <label for="task11_value1">n: </label><input type="text" id="task11_value1"><br>
+        <input type="button" value="Input"  onclick="task11()">
+        <p>Result:</p>
+        <div class="result" id="task11Result"></div>
+    </div>
+</div>
+
+<div class="task task12">
+    <div class="task_content">
+        <h3>Task 12</h3>
+        <p>Найти минимальный элемент массива.</p>
+        <label for="task12_value1">n: </label><input type="text" id="task12_value1"><br>
+        <input type="button" value="Input"  onclick="task12()">
+        <p>Result:</p>
+        <div class="result" id="task12Result"></div>
+    </div>
+</div>
+
+<div class="task task13">
+    <div class="task_content">
+        <h3>Task 13</h3>
+        <p>Найти максимальный элемент массива.</p>
+        <label for="task13_value1">n: </label><input type="text" id="task13_value1"><br>
+        <input type="button" value="Input"  onclick="task13()">
+        <p>Result:</p>
+        <div class="result" id="task13Result"></div>
+    </div>
+</div>
+
+<div class="task task14">
+    <div class="task_content">
+        <h3>Task 14</h3>
+        <p>Найти индекс минимального элемента массива.</p>
+        <label for="task14_value1">n: </label><input type="text" id="task14_value1"><br>
+        <input type="button" value="Input"  onclick="task14()">
+        <p>Result:</p>
+        <div class="result" id="task14Result"></div>
+    </div>
+</div>
+
+<div class="task task15">
+    <div class="task_content">
+        <h3>Task 15</h3>
+        <p>Найти индекс максимального элемента массива.</p>
+        <label for="task15_value1">n: </label><input type="text" id="task15_value1"><br>
+        <input type="button" value="Input"  onclick="task15()">
+        <p>Result:</p>
+        <div class="result" id="task15Result"></div>
+    </div>
+</div>
+
+<div class="task task16">
+    <div class="task_content">
+        <h3>Task 16</h3>
+        <p>Посчитать сумму элементов массива с нечетными индексами.</p>
+        <label for="task16_value1">n: </label><input type="text" id="task16_value1"><br>
+        <input type="button" value="Input"  onclick="task16()">
+        <p>Result:</p>
+        <div class="result" id="task16Result"></div>
+    </div>
+</div>
+
+<div class="task task17">
+    <div class="task_content">
+        <h3>Task 17</h3>
+        <p>Отсортировать массив пузырьком (Bubble).</p>
+        <label for="task17_value1">n :</label><input type="text" id="task17_value1"><br>
+        <input type="button" value="Input"  onclick="task17()">
+        <p>Result:</p>
+        <div class="result" id="task17Result"></div>
+    </div>
+</div>
+
+<div class="task task18">
+    <div class="task_content">
+        <h3>Task 18</h3>
+        <p>Отсортировать массив выбором (Select).</p>
+        <label for="task18_value1">n: </label><input type="text" id="task18_value1"><br>
+        <input type="button" value="Input"  onclick="task18()">
+        <p>Result:</p>
+        <div class="result" id="task18Result"></div>
+    </div>
+</div>
+
+<div class="task task19">
+    <div class="task_content">
+        <h3>Task 19</h3>
+        <p>Отсортировать массив вставками (Insert).</p>
+        <label for="task19_value1">n: </label><input type="text" id="task19_value1"><br>
+        <input type="button" value="Input"  onclick="task19()">
+        <p>Result:</p>
+        <div class="result" id="task19Result"></div>
+    </div>
+</div>
+
+<div class="task task20">
+    <div class="task_content">
+        <h3>Task 20</h3>
+        <p>Получить строковое название дня недели по номеру дня.</p>
+        <label for="task20_value1">n: </label><input type="text" id="task20_value1"><br>
+        <input type="button" value="Input"  onclick="task20()">
+        <p>Result:</p>
+        <div class="result" id="task20Result"></div>
+    </div>
+</div>
+
+<div class="task task21">
+    <div class="task_content">
+        <h3>Task 21</h3>
+        <p>Вводим число (0-999), получаем строку с прописью числа.</p>
+        <label for="task21_value1">n: </label><input type="text" id="task21_value1"><br>
+        <input type="button" value="Input"  onclick="task21()">
+        <p>Result:</p>
+        <div class="result" id="task21Result"></div>
+    </div>
+</div>
+
+<div class="task task22">
+    <div class="task_content">
+        <h3>Task 22</h3>
+        <p>Вводим строку, которая содержит число, написанное прописью (0-999).</p>
+        <label for="task22_value1">n: </label><input type="text" id="task22_value1"><br>
+        <input type="button" value="Input"  onclick="task22()">
+        <p>Result:</p>
+        <div class="result" id="task22Result"></div>
+    </div>
+</div>
+
+<div class="task task23">
+    <div class="task_content">
+        <h3>Task 23</h3>
+        <p>Найти расстояние между двумя точками в двумерном декартовом пространстве.</p>
+        <label for="task23_value1">x1: </label><input type="text" id="task23_value1"><br>
+        <label for="task23_value2">y1: </label><input type="text" id="task23_value2"><br>
+        <label for="task23_value3">x2: </label><input type="text" id="task23_value3"><br>
+        <label for="task23_value4">y2: </label><input type="text" id="task23_value4"><br>
+        <input type="button" value="Input"  onclick="task23()">
+        <p>Result:</p>
+        <div class="result" id="task23Result"></div>
+    </div>
 </div>
 
 </body>

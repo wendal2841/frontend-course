@@ -1,5 +1,46 @@
 body{
-    position: fixed;
+    position: absolute;
     left: 33%;
     font-family: sans-serif;
+}
+
+input[type=text]{
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background: #ffffff !important;
+    height: 24px;
+    width: 50%;
+    font-size: 14px;
+    margin-bottom: 1%;
+}
+
+input[type=button]{
+    height: 30%;
+    width: 15%;
+    font-size: 14px;
+    background-color: #99ccff;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    transition-duration: 0.4s;
+}
+
+input[type=button]:hover{
+    background-color: white;
+    color: black;
+}
+
+.result{
+    height: 30px;
+    font-size: 20px;
+}
+
+.task{
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid #bfd5ff;
+    background-color: #fff7e6;
+}
+
+.task_content{
+    margin-left: 10%;
 }
