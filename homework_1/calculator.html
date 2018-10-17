@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="calculator_script.js"></script>
+    <link rel="stylesheet" href="calculator_style.css">
+</head>
+<body>
+<div class="main_window">
+    <div class="top">
+        <input type="text" id="field">
+        <input type="button" id="button_backspace" value="<">
+    </div>
+    <div class="control">
+        <div class="numbers">
+            <input type="button" id="button_7" value="7" onclick="numberAction(7)">
+            <input type="button" id="button_8" value="8" onclick="numberAction(8)">
+            <input type="button" id="button_9" value="9" onclick="numberAction(9)">
+            <input type="button" id="button_4" value="4" onclick="numberAction(4)">
+            <input type="button" id="button_5" value="5" onclick="numberAction(5)">
+            <input type="button" id="button_6" value="6" onclick="numberAction(6)">
+            <input type="button" id="button_1" value="1" onclick="numberAction(1)">
+            <input type="button" id="button_2" value="2" onclick="numberAction(2)">
+            <input type="button" id="button_3" value="3" onclick="numberAction(3)">
+            <input type="button" id="button_dot" value=".">
+            <input type="button" id="button_0" value="0" onclick="numberAction(0)">
+            <input type="button" id="button_equal" value="=">
+
+        </div>
+        <div class="operations">
+            <input type="button" id="button_plus" value="+" onclick="operationAction('plus')">
+            <input type="button" id="button_minus" value="-" onclick="operationAction('minus')">
+            <input type="button" id="button_multiplication" value="/" onclick="operationAction('multiplication')">
+            <input type="button" id="button_division" value="*" onclick="operationAction('division')">
+        </div>
+    </div>
+</div>
+</body>
+</html>

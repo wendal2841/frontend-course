@@ -1,6 +1,4 @@
 body{
-    position: absolute;
-    left: 33%;
     font-family: sans-serif;
 }
 
@@ -16,7 +14,7 @@ input[type=text]{
 
 input[type=button]{
     height: 30%;
-    width: 15%;
+    width: 20%;
     font-size: 14px;
     background-color: #99ccff;
     border-radius: 3px;
@@ -35,8 +33,9 @@ input[type=button]:hover{
 }
 
 .task{
+    position: relative;
     margin: 0 auto;
-    width: 100%;
+    width: 50%;
     border: 1px solid #bfd5ff;
     background-color: #fff7e6;
 }
