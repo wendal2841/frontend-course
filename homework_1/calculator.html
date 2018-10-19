@@ -10,7 +10,8 @@
 <div class="main_window">
     <div class="top">
         <input type="text" id="field">
-        <input type="button" id="button_backspace" value="<">
+        <input type="button" id="button_backspace" value="<" onclick="backspaceAction()">
+        <input type="button" id="button_clear" value="C" onclick="clearAll()">
     </div>
     <div class="control">
         <div class="numbers">
@@ -23,16 +24,16 @@
             <input type="button" id="button_1" value="1" onclick="numberAction(1)">
             <input type="button" id="button_2" value="2" onclick="numberAction(2)">
             <input type="button" id="button_3" value="3" onclick="numberAction(3)">
-            <input type="button" id="button_dot" value=".">
+            <input type="button" id="button_dot" value="."  onclick="dotAction()">
             <input type="button" id="button_0" value="0" onclick="numberAction(0)">
-            <input type="button" id="button_equal" value="=">
+            <input type="button" id="button_equal" value="=" onclick="calculate()">
 
         </div>
         <div class="operations">
             <input type="button" id="button_plus" value="+" onclick="operationAction('plus')">
             <input type="button" id="button_minus" value="-" onclick="operationAction('minus')">
-            <input type="button" id="button_multiplication" value="/" onclick="operationAction('multiplication')">
-            <input type="button" id="button_division" value="*" onclick="operationAction('division')">
+            <input type="button" id="button_multiplication" value="*" onclick="operationAction('multiplication')">
+            <input type="button" id="button_division" value="/" onclick="operationAction('division')">
         </div>
     </div>
 </div>

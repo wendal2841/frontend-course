@@ -2,52 +2,76 @@
 
 class Calculator{
     constructor(){
-        this.x =0;
-        this.y = 0;
+        this.x = null;
+        this.y = null;
         this.result = 0
     }
 
-    setX(value) {
-        this.x = value;
+    clear(){
+        this.x = null;
+        this.y = null;
+        this.result = 0;
     }
-    setY(value) {
-        this.y = value;
+
+    action(operation, value){
+        if(this.x === null){
+            this.x = Math.abs(+value);
+        } else if (this.x !== null && this.y === null && operation) {
+            this.y = Math.abs(+value);
+            this.calculate(operation)
+        }
     }
+
     getResult(){
-        this.setX(result);
+        this.x = null;
+        this.y = null;
         return this.result;
     }
 
-    plus() {
-        this.result = this.x + this.y;
+    calculate(action){
+        switch (action) {
+            case 'minus':
+                this.result = this.x - this.y;
+                break;
+            case 'plus':
+                this.result = this.x + this.y;
+                break;
+            case 'multiplication':
+                this.result = this.x * this.y;
+                break;
+            case 'division':
+                this.result = this.x / this.y;
+                break;
+        }
+        this.x = this.result;
+        this.y = null;
     }
-    minus() {
-        this.result = this.x - this.y;
-    }
-    multiplication() {
-        this.result = this.x * this.y;
-    }
-    division() {
-        this.result = this.x/this.y;
-    }
+
+
 
 }
 
 class Controller{
     constructor(){
         this.calculator = new Calculator();
+        this.curentOperation = null;
     }
 
     getField() {
         this.field = document.getElementById('field');
     }
 
-    getButtonValue(number) {
-        return +document.getElementById('button_'+number).value;
+    printDot(){
+        if(this.field.value.indexOf('.') === -1) this.field.value += '.'
     }
 
     printNumber(number) {
-        this.field.value += number.toString();
+        if(('*/').indexOf(this.field.value) !== -1) this.field.value = number.toString();
+        else this.field.value += number.toString();
+    }
+
+    printResult(){
+        this.field.value = this.calculator.getResult()
     }
 
     printOperation(action) {
@@ -65,6 +89,22 @@ class Controller{
                 this.field.value = '/';
                 break;
         }
+        this.curentOperation = action;
+    }
+
+    calculate() {
+        if (+this.field.value)
+        this.calculator.action(this.curentOperation, this.field.value)
+    }
+
+    backspace(){
+        this.field.value = this.field.value.slice(0, -1)
+    }
+
+    clear(){
+        this.field.value = '';
+        this.curentOperation = null;
+        this.calculator.clear();
     }
 }
 
@@ -77,6 +117,26 @@ let numberAction = (number) => {
 
 let operationAction = (action) => {
     controller.getField();
-    controller.printOperation(action)
+    controller.calculate();
+    controller.printOperation(action);
 
-}
+};
+
+let dotAction = () => {
+    controller.printDot()
+};
+
+let calculate = () => {
+    controller.calculate();
+    controller.printResult()
+};
+
+let backspaceAction = () => {
+    controller.getField();
+    controller.backspace();
+};
+
+let clearAll = () => {
+    controller.getField();
+    controller.clear();
+};

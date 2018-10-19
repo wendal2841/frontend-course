@@ -3,21 +3,37 @@
     /*padding: 5px;*/
     margin: 0 auto;
     width: 30%;
-    height: 50%;
+    height: 300px;
+    position: relative;
+    /*border: 1px solid black;*/
 }
 
 .top{
+    width: 100%;
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 4fr 1fr 1fr;
     padding-bottom: 2%;
+    height: 20%;
+}
+
+.top input[type=text]{
+    /*height: 50%;*/
+    /*padding-top: 50%;*/
+    /*position: relative;*/
+    font-size: 40px;
 }
 
 .control{
     display: grid;
     grid-template-columns: 70% 30%;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
 }
+input[type=button]{
+    /*width: 30%;*/
+    /*padding: 4px;*/
+    font-size: 40px;
 
+}
 .numbers{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -27,8 +43,7 @@
 .operations{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50% 50%;
 }
-input[type=button]{
-    /*width: 30%;*/
-    padding: 4px;
-}
+
+
