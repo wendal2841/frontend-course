@@ -42,6 +42,39 @@ class Calculator{
             case 'division':
                 this.result = this.x / this.y;
                 break;
+            case 'sin':
+                this.field.value = '-';
+                break;
+            case 'cos':
+                this.field.value = '+';
+                break;
+            case 'tan':
+                this.field.value = '*';
+                break;
+            case 'log':
+                this.field.value = '/';
+                break;
+            case 'ln':
+                this.field.value = '-';
+                break;
+            case 'exp':
+                this.field.value = '+';
+                break;
+            case 'sqr':
+                this.field.value = '*';
+                break;
+            case 'pow':
+                this.field.value = '-';
+                break;
+            case 'sqrt':
+                this.field.value = '+';
+                break;
+            case 'percent':
+                this.field.value = '*';
+                break;
+            case 'pi':
+                this.field.value = '/';
+                break;
         }
         this.x = this.result;
         this.y = null;
@@ -87,6 +120,39 @@ class Controller{
                 break;
             case 'division':
                 this.field.value = '/';
+                break;
+            case 'sin':
+                this.field.value = 'sin ';
+                break;
+            case 'cos':
+                this.field.value = 'cos ';
+                break;
+            case 'tan':
+                this.field.value = 'tan ';
+                break;
+            case 'log':
+                this.field.value = 'log ';
+                break;
+            case 'ln':
+                this.field.value = 'ln';
+                break;
+            case 'exp':
+                this.field.value = 'exp ';
+                break;
+            case 'sqr':
+                this.field.value = '^2';
+                break;
+            case 'pow':
+                this.field.value = '^';
+                break;
+            case 'sqrt':
+                this.field.value = '√';
+                break;
+            case 'percent':
+                this.field.value = '%';
+                break;
+            case 'pi':
+                this.field.value = 'pi';
                 break;
         }
         this.curentOperation = action;
