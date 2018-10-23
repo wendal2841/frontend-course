@@ -7,47 +7,39 @@
     <link rel="stylesheet" href="calculator_style.css">
 </head>
 <body>
-<div class="main_window">
-    <div class="top">
-        <input type="text" id="field">
-        <input type="button" id="button_backspace" value="<" onclick="backspaceAction()">
-        <input type="button" id="button_clear" value="C" onclick="clearAll()">
+<div id="calculatorBody">
+    <div>  <input id="AC" type="button" onclick="clearAll()" value="AC"/> <span id="answer">0</span>    </div>
+    <div class="row">
+
+
     </div>
-    <div class="control">
-        <div class="numbers">
-            <input type="button" id="button_7" value="7" onclick="numberAction(7)">
-            <input type="button" id="button_8" value="8" onclick="numberAction(8)">
-            <input type="button" id="button_9" value="9" onclick="numberAction(9)">
-            <input type="button" id="button_4" value="4" onclick="numberAction(4)">
-            <input type="button" id="button_5" value="5" onclick="numberAction(5)">
-            <input type="button" id="button_6" value="6" onclick="numberAction(6)">
-            <input type="button" id="button_1" value="1" onclick="numberAction(1)">
-            <input type="button" id="button_2" value="2" onclick="numberAction(2)">
-            <input type="button" id="button_3" value="3" onclick="numberAction(3)">
-            <input type="button" id="button_dot" value="."  onclick="dotAction()">
-            <input type="button" id="button_0" value="0" onclick="numberAction(0)">
-            <input type="button" id="button_equal" value="=" onclick="calculate()">
+    <div class="row">
+        <input type="button" onclick="numericButton('7')" value="7"/>
+        <input type="button" onclick="numericButton('8')" value="8"/>
+        <input type="button"  onclick="numericButton('9')" value="9"/>
+        <input type="button" onclick="operatorButton('+')" value="+"/>
+    </div>
+    <div class="row">
+        <input type="button"  onclick="numericButton('4')" value="4"/>
+        <input type="button" onclick="numericButton('5')" value="5"/>
+        <input type="button"  onclick="numericButton('6')" value="6"/>
+        <input type="button" onclick="operatorButton('-')" value="-"/>
+    </div>
+    <div class="row">
+        <input type="button"  onclick="numericButton('1')" value="1"/>
+        <input type="button"  onclick="numericButton('2')" value="2"/>
+        <input type="button"  onclick="numericButton('3')" value="3"/>
+        <input type="button" onclick="operatorButton('*')" value="*"/>
+    </div>
+    <div class="row">
+        <input type="button"  onclick="numericButton('0')" value="0"/>
+        <input type="button" onclick="numericButton('.')" value="."/>
+        <input id="equals" type="button"  onclick="calculateQueue(queue)" value="="/>
+        <input type="button" onclick="operatorButton('/')" value="/"/>
 
-        </div>
-        <div class="operations">
-            <input type="button" id="button_plus" value="+" onclick="operationAction('plus')">
-            <input type="button" id="button_minus" value="-" onclick="operationAction('minus')">
-            <input type="button" id="button_multiplication" value="*" onclick="operationAction('multiplication')">
-            <input type="button" id="button_division" value="/" onclick="operationAction('division')">
-            <input type="button" id="button_sin" value="sin" onclick="operationAction('sin')">
-            <input type="button" id="button_cos" value="cos" onclick="operationAction('cos')">
-            <input type="button" id="button_tan" value="tan" onclick="operationAction('tan')">
-            <input type="button" id="button_log" value="log" onclick="operationAction('log')">
-            <input type="button" id="button_ln" value="ln" onclick="operationAction('ln')">
-            <input type="button" id="button_exp" value="exp" onclick="operationAction('exp')">
-            <input type="button" id="button_qrt" value="xˆ2" onclick="operationAction('sqr')">
-            <input type="button" id="button_pow" value="xˆy" onclick="operationAction('pow')">
-            <input type="button" id="button_sqrt" value="√x" onclick="operationAction('sqrt')">
-            <input type="button" id="button_percent" value="%" onclick="operationAction('percent')">
-            <input type="button" id="button_pi" value="pi" onclick="operationAction('pi')">
 
-        </div>
     </div>
 </div>
+
 </body>
 </html>
