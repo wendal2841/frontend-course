@@ -84,10 +84,27 @@ class Calculator{
 
 }
 
+const OPERATIONS_PRIORITY = {
+    '(': 0,
+    ')': 0,
+    '+': 1,
+    '-': 1,
+    'sin': 2,
+    'cos': 2,
+    'tan': 2,
+    'ln': 2,
+    'log': 2,
+    'pi': 2,
+    '*': 2,
+    '/': 2,
+    '^':3,
+    '√':3,
+    '!':3
+}
+
 class Controller{
     constructor(){
         this.calculator = new Calculator();
-        this.curentOperation = null;
     }
 
     getField() {
@@ -158,9 +175,24 @@ class Controller{
         this.curentOperation = action;
     }
 
-    calculate() {
-        if (+this.field.value)
-        this.calculator.action(this.curentOperation, this.field.value)
+    calculate(string) {
+        let stack = [];
+        let out = [];
+        let arr = string.split(' ');
+        for(let value in arr){
+            if(!(value in OPERATIONS_PRIORITY)) {
+                out.push(value);
+            } else if(value === ')'){
+                let tmp = arr.lastIndexOf('(');
+                out = out.concat(arr.splice(tmp, arr.length-tmp));
+            } else {
+                if(value !== '(' && OPERATIONS_PRIORITY[arr[arr.length-1]]>OPERATIONS_PRIORITY[value]){
+                    out.push(stack.pop());
+                    stack.push(value);
+                } else stack.push(value)
+            }
+        }
+        return out.concat(stack)
     }
 
     backspace(){
@@ -175,6 +207,33 @@ class Controller{
 }
 
 let controller = new Controller();
+
+let calcu = (string) => {
+        let stack = [];
+        let out = [];
+        let arr = string.split(' ');
+        for(let i=0; i<arr.length; i++){
+            var value = arr[i];
+            if(!(value in OPERATIONS_PRIORITY)) {
+                out.push(value);
+            } else if(value === ')'){
+                let tmp = stack.lastIndexOf('(');
+                for(let j=stack.length-1; j>tmp; j--){
+                    out.push(stack.pop())
+                }
+                stack.pop();
+            } else {
+
+                if(value !== '(' && OPERATIONS_PRIORITY[stack[stack.length-1]]>=OPERATIONS_PRIORITY[value]){
+                    out.push(stack.pop());
+                    stack.push(value);
+                } else stack.push(value)
+            }
+        }
+        return out.concat(stack)
+    }
+let str = "3 + 4 * 2 / ( 1 − 5 ) ^ 2"
+console.log(calcu(str));
 
 let numberAction = (number) => {
     controller.getField();
