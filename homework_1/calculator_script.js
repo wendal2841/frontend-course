@@ -1,219 +1,106 @@
 'use strict';
 
-class Calculator{
-    constructor(){
-        this.x = null;
-        this.y = null;
-        this.result = 0
-    }
+let makeSum = (stack) => {
+    stack.push(+stack.pop() + +stack.pop())
+};
 
-    clear(){
-        this.x = null;
-        this.y = null;
-        this.result = 0;
-    }
+let makeDif = (stack) => {
+    let [y, x] = [stack.pop(), stack.pop()];
+    if(x === undefined) x = 0;
+    stack.push(+x - +y);
+};
 
-    action(operation, value){
-        if(this.x === null){
-            this.x = Math.abs(+value);
-        } else if (this.x !== null && this.y === null && operation) {
-            this.y = Math.abs(+value);
-            this.calculate(operation)
-        }
-    }
+let makeMult = (stack) => {
+    stack.push(+stack.pop() * +stack.pop())
+};
 
-    getResult(){
-        this.x = null;
-        this.y = null;
-        return this.result;
-    }
+let makeDivis = (stack) => {
+    let [y, x] = [stack.pop(), stack.pop()];
+    (+y !== 0)? stack.push(+x / +y): stack.push('ERROR');
+};
 
-    calculate(action){
-        switch (action) {
-            case 'minus':
-                this.result = this.x - this.y;
-                break;
-            case 'plus':
-                this.result = this.x + this.y;
-                break;
-            case 'multiplication':
-                this.result = this.x * this.y;
-                break;
-            case 'division':
-                this.result = this.x / this.y;
-                break;
-            case 'sin':
-                this.field.value = '-';
-                break;
-            case 'cos':
-                this.field.value = '+';
-                break;
-            case 'tan':
-                this.field.value = '*';
-                break;
-            case 'log':
-                this.field.value = '/';
-                break;
-            case 'ln':
-                this.field.value = '-';
-                break;
-            case 'exp':
-                this.field.value = '+';
-                break;
-            case 'sqr':
-                this.field.value = '*';
-                break;
-            case 'pow':
-                this.field.value = '-';
-                break;
-            case 'sqrt':
-                this.field.value = '+';
-                break;
-            case 'percent':
-                this.field.value = '*';
-                break;
-            case 'pi':
-                this.field.value = '/';
-                break;
-        }
-        this.x = this.result;
-        this.y = null;
-    }
+let makeSin = (stack) => {
+    stack.push(Math.sin(+stack.pop()));
+};
 
+let makeCos = (stack) => {
+    stack.push(Math.cos(+stack.pop()));
+};
 
+let makeTan = (stack) => {
+    stack.push(Math.tan(+stack.pop()));
+};
 
-}
+let makeLn = (stack) => {
+    stack.push(Math.log10(+stack.pop()));
+};
+
+let makeLog = (stack) => {
+    stack.push(Math.log(+stack.pop()));
+};
+
+let makePi = (stack) => {
+    stack.push(Math.PI * +stack.pop());
+};
+
+let makePow = (stack) => {
+    let [y, x] = [stack.pop(), stack.pop()];
+    stack.push(Math.pow(+x, +y));
+};
+
+let makeSqrt = (stack) => {
+    stack.push(Math.sqrt(+stack.pop()));
+};
+
+let makeFactorial = (stack) => {
+    let value = +stack.pop();
+    let result = 1;
+    for (let i=value; i>1; i--){ result *= i; }
+    stack.push(result);
+};
+
+const OPERATIONS_ACTION = {
+    '+': makeSum,
+    '-': makeDif,
+    'sin': makeSin,
+    'cos': makeCos,
+    'tan': makeTan,
+    'ln': makeLn,
+    'log': makeLog,
+    'pi': makePi,
+    '*': makeMult,
+    '/': makeDivis,
+    '^': makePow,
+    '√': makeSqrt,
+    '!': makeFactorial
+};
 
 const OPERATIONS_PRIORITY = {
-    '(': 0,
-    ')': 0,
-    '+': 1,
-    '-': 1,
-    'sin': 2,
-    'cos': 2,
-    'tan': 2,
-    'ln': 2,
-    'log': 2,
-    'pi': 2,
-    '*': 2,
-    '/': 2,
-    '^':3,
-    '√':3,
-    '!':3
-}
+    '(': 1,
+    ')': 1,
+    '+': 2,
+    '-': 2,
+    '*': 3,
+    '/': 3,
+    '√': 4,
+    '^' : 4,
+    'sin': 10,
+    'cos': 10,
+    'tan': 10,
+    'ln': 10,
+    'log': 10,
+    'pi': 10,
+    '!': 10
+};
+const RIGHT_ASSOCIATIVITY = ['√', '^', 'sin', 'cos', 'tan', 'ln', 'log', 'abs', '!'];
 
-class Controller{
-    constructor(){
-        this.calculator = new Calculator();
-    }
-
-    getField() {
-        this.field = document.getElementById('field');
-    }
-
-    printDot(){
-        if(this.field.value.indexOf('.') === -1) this.field.value += '.'
-    }
-
-    printNumber(number) {
-        if(('*/').indexOf(this.field.value) !== -1) this.field.value = number.toString();
-        else this.field.value += number.toString();
-    }
-
-    printResult(){
-        this.field.value = this.calculator.getResult()
-    }
-
-    printOperation(action) {
-        switch (action) {
-            case 'minus':
-                this.field.value = '-';
-                break;
-            case 'plus':
-                this.field.value = '+';
-                break;
-            case 'multiplication':
-                this.field.value = '*';
-                break;
-            case 'division':
-                this.field.value = '/';
-                break;
-            case 'sin':
-                this.field.value = 'sin ';
-                break;
-            case 'cos':
-                this.field.value = 'cos ';
-                break;
-            case 'tan':
-                this.field.value = 'tan ';
-                break;
-            case 'log':
-                this.field.value = 'log ';
-                break;
-            case 'ln':
-                this.field.value = 'ln';
-                break;
-            case 'exp':
-                this.field.value = 'exp ';
-                break;
-            case 'sqr':
-                this.field.value = '^2';
-                break;
-            case 'pow':
-                this.field.value = '^';
-                break;
-            case 'sqrt':
-                this.field.value = '√';
-                break;
-            case 'percent':
-                this.field.value = '%';
-                break;
-            case 'pi':
-                this.field.value = 'pi';
-                break;
-        }
-        this.curentOperation = action;
-    }
-
-    calculate(string) {
+let createRPN = (string) => {
         let stack = [];
         let out = [];
-        let arr = string.split(' ');
-        for(let value in arr){
-            if(!(value in OPERATIONS_PRIORITY)) {
-                out.push(value);
-            } else if(value === ')'){
-                let tmp = arr.lastIndexOf('(');
-                out = out.concat(arr.splice(tmp, arr.length-tmp));
-            } else {
-                if(value !== '(' && OPERATIONS_PRIORITY[arr[arr.length-1]]>OPERATIONS_PRIORITY[value]){
-                    out.push(stack.pop());
-                    stack.push(value);
-                } else stack.push(value)
-            }
-        }
-        return out.concat(stack)
-    }
-
-    backspace(){
-        this.field.value = this.field.value.slice(0, -1)
-    }
-
-    clear(){
-        this.field.value = '';
-        this.curentOperation = null;
-        this.calculator.clear();
-    }
-}
-
-let controller = new Controller();
-
-let calcu = (string) => {
-        let stack = [];
-        let out = [];
+        stack.last = () => stack[stack.length - 1];
         let arr = string.split(' ');
         for(let i=0; i<arr.length; i++){
-            var value = arr[i];
+            let value = arr[i];
             if(!(value in OPERATIONS_PRIORITY)) {
                 out.push(value);
             } else if(value === ')'){
@@ -222,46 +109,81 @@ let calcu = (string) => {
                     out.push(stack.pop())
                 }
                 stack.pop();
-            } else {
-
-                if(value !== '(' && OPERATIONS_PRIORITY[stack[stack.length-1]]>=OPERATIONS_PRIORITY[value]){
+            } else if(value === '('){
+                stack.push(value);
+            } else if(OPERATIONS_PRIORITY[value]){
+                let opCompare = RIGHT_ASSOCIATIVITY.indexOf(value) > -1 ?
+                    () => OPERATIONS_PRIORITY[stack.last()] > OPERATIONS_PRIORITY[value] :
+                    () => OPERATIONS_PRIORITY[stack.last()] >= OPERATIONS_PRIORITY[value];
+                while (stack.length > 0 && opCompare())
                     out.push(stack.pop());
-                    stack.push(value);
-                } else stack.push(value)
+                stack.push(value);
             }
         }
-        return out.concat(stack)
+        return out.concat(stack.reverse())
+    };
+
+let calculate = (arr) => {
+    let stack = [];
+    arr.forEach((value) => {
+        if(!(value in OPERATIONS_PRIORITY)) stack.push(value);
+        else {
+
+            (OPERATIONS_ACTION[value])? OPERATIONS_ACTION[value](stack): stack.push('ERROR')
+        }
+    });
+    if(stack.length === 1) return stack[0];
+    else return "ERROR";
+};
+
+let clearIfBegining = () => {
+    if ( document.getElementById("answer").innerHTML ===  "ERROR" || (document.getElementById("answer").innerHTML === "0"))
+        document.getElementById("answer").innerHTML = "";
+};
+
+let numericButton = (arg) => {
+    clearIfBegining();
+    if (!(arg === ".")) {
+        document.getElementById("answer").innerHTML += arg;
     }
-let str = "3 + 4 * 2 / ( 1 − 5 ) ^ 2"
-console.log(calcu(str));
-
-let numberAction = (number) => {
-    controller.getField();
-    controller.printNumber(number);
 };
 
-let operationAction = (action) => {
-    controller.getField();
-    controller.calculate();
-    controller.printOperation(action);
-
+let operatorButton = (arg) => {
+    clearIfBegining();
+    if(document.getElementById("answer").innerHTML[document.getElementById("answer").innerHTML.length - 1] !== ' ') {
+        document.getElementById("answer").innerHTML += ' ' + arg + ' '
+    } else {
+        document.getElementById("answer").innerHTML += arg + ' '
+    }
 };
 
-let dotAction = () => {
-    controller.printDot()
+let functionButton = (arg) => {
+    clearIfBegining();
+    if(document.getElementById("answer").innerHTML[document.getElementById("answer").innerHTML.length - 1] !== ' ') {
+        document.getElementById("answer").innerHTML += ' ' + arg + ' ( ';
+    } else {
+        document.getElementById("answer").innerHTML += arg + ' ( ';
+    }
 };
 
-let calculate = () => {
-    controller.calculate();
-    controller.printResult()
+let dotButton = () => {
+    if (document.getElementById("answer").innerHTML[document.getElementById("answer").innerHTML.length - 1] !== '.'){
+        document.getElementById("answer").innerHTML += '.'
+    };
+};
+
+let result = () => {
+    document.getElementById('answer').innerHTML = calculate(createRPN(document.getElementById('answer').innerHTML.trim()));
 };
 
 let backspaceAction = () => {
-    controller.getField();
-    controller.backspace();
+    if(document.getElementById('answer').innerHTML[document.getElementById('answer').innerHTML.length -1] === ' '){
+        document.getElementById('answer').innerHTML = document.getElementById('answer').innerHTML.slice(0, -2)
+    } else {
+        document.getElementById('answer').innerHTML = document.getElementById('answer').innerHTML.slice(0, -1)
+    }
 };
 
 let clearAll = () => {
-    controller.getField();
-    controller.clear();
+    document.getElementById("answer").innerHTML = "0";
 };
