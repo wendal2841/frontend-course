@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <script src="tests_script.js"></script>
+    <script src="calculator_script.js"></script>
+    <script src="workflow_script.js"></script>
+    <script src="script.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+        mocha.setup('bdd');
+    </script>
+
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+        var assert = chai.assert;
+    </script>
+</head>
+
+<body>
+
+<script>
+    describe("Workflow tests", function() {
+        describe("Company and Persons test", function() {
+            let DTEK = new Company("DTEK");
+            let person1 = new Person('test', 42);
+            it("Company constructor test.", function() {
+                let comp = new Company('name');
+                assert(comp);
+                assert.equal(comp.name, 'name')
+            });
+            it("Company employee list is empty at start.", function() {
+                assert.notStrictEqual(DTEK.employees, {});
+            });
+            it("Person constructor test", function() {
+                let test = new Person('test', 42);
+                assert(test);
+            });
+
+
+
+        });
+
+    });
+</script>
+
+<!-- в этом скрипте находятся спеки -->
+<script src="tests_script.js"></script>
+
+<!-- в элементе с id="mocha" будут результаты тестов -->
+<div id="mocha"></div>
+
+<!-- запустить тесты! -->
+<script>
+    mocha.run();
+</script>
+</body>
+
+</html>

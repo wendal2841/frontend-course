@@ -136,6 +136,22 @@ let calculate = (arr) => {
     else return "ERROR";
 };
 
+let str = '( 1 + 2 ) / 2 ^ 2';
+console.log(createRPN(str))
+console.log(calculate(createRPN(str)));
+
+let addResultToLocalStorage = (value) => {
+    let now = new Date();
+    let key = 'value_'+now.getTime().toString();
+    localStorage.setItem(key, value);
+};
+
+let addResultToSessionStorage = (value) => {
+    let now = new Date();
+    let key = 'value_'+now.getTime().toString();
+    sessionStorage.setItem(key, value);
+};
+
 let clearIfBegining = () => {
     if ( document.getElementById("answer").innerHTML ===  "ERROR" || (document.getElementById("answer").innerHTML === "0"))
         document.getElementById("answer").innerHTML = "";
@@ -173,7 +189,11 @@ let dotButton = () => {
 };
 
 let result = () => {
-    document.getElementById('answer').innerHTML = calculate(createRPN(document.getElementById('answer').innerHTML.trim()));
+    let result = calculate(createRPN(document.getElementById('answer').innerHTML.trim()));
+    document.getElementById('answer').innerHTML = result;
+    addResultToLocalStorage(result);
+    addResultToSessionStorage(result);
+
 };
 
 let backspaceAction = () => {
