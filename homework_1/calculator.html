@@ -6,9 +6,14 @@
     <script src="calculator_script.js"></script>
     <link rel="stylesheet" href="calculator_style.css">
 </head>
+
 <body>
 <div id="calculatorBody">
-    <div>  <input id="AC" type="button" onclick="clearAll()" value="AC"/> <span id="answer">0</span>    </div>
+    <div>
+        <input id="AC" type="button" onclick="clearAll()" value="AC"/>
+        <span id="answer">0</span>
+        <input type="button" onclick="backspaceAction()" value="<"/>
+    </div>
     <div class="row">
 
 
@@ -18,24 +23,36 @@
         <input type="button" onclick="numericButton('8')" value="8"/>
         <input type="button"  onclick="numericButton('9')" value="9"/>
         <input type="button" onclick="operatorButton('+')" value="+"/>
+        <input type="button"  onclick="functionButton('sin')" value="sin"/>
+        <input type="button" onclick="operatorButton('^')" value="^"/>
+        <input type="button" onclick="operatorButton('3.14')" value="pi"/>
     </div>
     <div class="row">
         <input type="button"  onclick="numericButton('4')" value="4"/>
         <input type="button" onclick="numericButton('5')" value="5"/>
         <input type="button"  onclick="numericButton('6')" value="6"/>
         <input type="button" onclick="operatorButton('-')" value="-"/>
+        <input type="button"  onclick="functionButton('cos')" value="cos"/>
+        <input type="button" onclick="functionButton('√')" value="√"/>
+        <input type="button" onclick="operatorButton('!')" value="n!"/>
     </div>
     <div class="row">
         <input type="button"  onclick="numericButton('1')" value="1"/>
         <input type="button"  onclick="numericButton('2')" value="2"/>
         <input type="button"  onclick="numericButton('3')" value="3"/>
         <input type="button" onclick="operatorButton('*')" value="*"/>
+        <input type="button"  onclick="functionButton('tan')" value="tan"/>
+        <input type="button" onclick="functionButton('ln')" value="ln"/>
+        <input type="button" onclick="operatorButton('(')" value="("/>
     </div>
     <div class="row">
         <input type="button"  onclick="numericButton('0')" value="0"/>
-        <input type="button" onclick="numericButton('.')" value="."/>
-        <input id="equals" type="button"  onclick="calculateQueue(queue)" value="="/>
+        <input type="button" onclick="dotButton()" value="."/>
+        <input id="equals" type="button"  onclick="result()" value="="/>
         <input type="button" onclick="operatorButton('/')" value="/"/>
+        <input type="button"  onclick="operatorButton('!')" value="!"/>
+        <input type="button" onclick="functionButton('log')" value="log"/>
+        <input type="button" onclick="operatorButton(')')" value=")"/>
 
 
     </div>
