@@ -95,33 +95,33 @@ const OPERATIONS_PRIORITY = {
 const RIGHT_ASSOCIATIVITY = ['√', '^', 'sin', 'cos', 'tan', 'ln', 'log', 'abs', '!'];
 
 let createRPN = (string) => {
-    let stack = [];
-    let out = [];
-    stack.last = () => stack[stack.length - 1];
-    let arr = string.split(' ');
-    for(let i=0; i<arr.length; i++){
-        let value = arr[i];
-        if(!(value in OPERATIONS_PRIORITY)) {
-            out.push(value);
-        } else if(value === ')'){
-            let tmp = stack.lastIndexOf('(');
-            for(let j=stack.length-1; j>tmp; j--){
-                out.push(stack.pop())
+        let stack = [];
+        let out = [];
+        stack.last = () => stack[stack.length - 1];
+        let arr = string.split(' ');
+        for(let i=0; i<arr.length; i++){
+            let value = arr[i];
+            if(!(value in OPERATIONS_PRIORITY)) {
+                out.push(value);
+            } else if(value === ')'){
+                let tmp = stack.lastIndexOf('(');
+                for(let j=stack.length-1; j>tmp; j--){
+                    out.push(stack.pop())
+                }
+                stack.pop();
+            } else if(value === '('){
+                stack.push(value);
+            } else if(OPERATIONS_PRIORITY[value]){
+                let opCompare = RIGHT_ASSOCIATIVITY.indexOf(value) > -1 ?
+                    () => OPERATIONS_PRIORITY[stack.last()] > OPERATIONS_PRIORITY[value] :
+                    () => OPERATIONS_PRIORITY[stack.last()] >= OPERATIONS_PRIORITY[value];
+                while (stack.length > 0 && opCompare())
+                    out.push(stack.pop());
+                stack.push(value);
             }
-            stack.pop();
-        } else if(value === '('){
-            stack.push(value);
-        } else if(OPERATIONS_PRIORITY[value]){
-            let opCompare = RIGHT_ASSOCIATIVITY.indexOf(value) > -1 ?
-                () => OPERATIONS_PRIORITY[stack.last()] > OPERATIONS_PRIORITY[value] :
-                () => OPERATIONS_PRIORITY[stack.last()] >= OPERATIONS_PRIORITY[value];
-            while (stack.length > 0 && opCompare())
-                out.push(stack.pop());
-            stack.push(value);
         }
-    }
-    return out.concat(stack.reverse())
-};
+        return out.concat(stack.reverse())
+    };
 
 let calculate = (arr) => {
     let stack = [];
@@ -134,6 +134,22 @@ let calculate = (arr) => {
     });
     if(stack.length === 1) return stack[0];
     else return "ERROR";
+};
+
+let str = '( 1 + 2 ) / 2 ^ 2';
+console.log(createRPN(str))
+console.log(calculate(createRPN(str)));
+
+let addResultToLocalStorage = (value) => {
+    let now = new Date();
+    let key = 'value_'+now.getTime().toString();
+    localStorage.setItem(key, value);
+};
+
+let addResultToSessionStorage = (value) => {
+    let now = new Date();
+    let key = 'value_'+now.getTime().toString();
+    sessionStorage.setItem(key, value);
 };
 
 let clearIfBegining = () => {
@@ -173,7 +189,11 @@ let dotButton = () => {
 };
 
 let result = () => {
-    document.getElementById('answer').innerHTML = calculate(createRPN(document.getElementById('answer').innerHTML.trim()));
+    let result = calculate(createRPN(document.getElementById('answer').innerHTML.trim()));
+    document.getElementById('answer').innerHTML = result;
+    addResultToLocalStorage(result);
+    addResultToSessionStorage(result);
+
 };
 
 let backspaceAction = () => {
