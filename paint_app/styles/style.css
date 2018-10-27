@@ -47,6 +47,10 @@ body{
     height: 600px;
 }
 
+.canvas-wrapper div .layer2 {
+    display: none;
+}
+
 .current-status {
     display: flex;
 }

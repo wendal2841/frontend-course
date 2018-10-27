@@ -16,16 +16,22 @@ function init() {
     globalFigure = getLastFigure();
     isBrushStatus = getLastIsBrushStatus();
     
-    const canvas = document.getElementById('canvas1');
-    canvas.width = document.getElementById('canvasWrapper').clientWidth;
-    canvas.height = document.getElementById('canvasWrapper').clientHeight;
+    const canvas1 = document.getElementById('canvas1');
+    canvas1.width = document.getElementById('canvasWrapper').clientWidth;
+    canvas1.height = document.getElementById('canvasWrapper').clientHeight;
+
+    const canvas2 = document.getElementById('canvas2');
+    canvas2.width = document.getElementById('canvasWrapper').clientWidth;
+    canvas2.height = document.getElementById('canvasWrapper').clientHeight;
+    setDisplayStatusCanvas2();
 
     setColor(globalColor);
     setSize(globalSize);
     setFigure(globalFigure);
     setIsBrushStatus(isBrushStatus);
 
-    addEventListeners(canvas);
+    canvas1AddEventListeners(canvas1);
+    canvas2AddEventListeners(canvas2);
 }
 
 function getLastColor() {
@@ -77,7 +83,10 @@ function setIsBrushStatus(status) {
 }
 
 function changeColor() {
-    setColor(document.getElementById('colorField').value);
+    let color = document.getElementById('colorField').value;
+    if (colorValidation(color)){
+        setColor(color)
+    }
 }
 
 function changeSize() {
@@ -90,8 +99,10 @@ function changeFigure(figure){
 
 function changeIsBrushStatus() {
     let status = (document.getElementById('isBrushStatus').checked);
-    if (status) setIsBrushStatus(true)
-    else setIsBrushStatus(false)
+    if (status) setIsBrushStatus(true);
+    else setIsBrushStatus(false);
+
+    setDisplayStatusCanvas2();
 }
 
 function setCurrentColor(color) {
@@ -103,20 +114,24 @@ function setCurrentCoordinates(x, y) {
     document.getElementById('currentY').innerHTML = `y=${y}px`;
 }
 
-function addEventListeners(canvas) {
+function canvas1AddEventListeners(canvas) {
     canvas.addEventListener('mousemove', mouserMoveHandler);
-    canvas.addEventListener('click', mouseCLickHandler);
     canvas.addEventListener('mousedown', mouseDownHandler);
     canvas.addEventListener('mouseup', mouseUpHandler);
 }
+
+function canvas2AddEventListeners(canvas) {
+    canvas.addEventListener('mousemove', mouserMoveHandlerCanvas2);
+    canvas.addEventListener('click', mouseCLickHandlerCanvas2);
+}
+
+
 
 function mouserMoveHandler(event) {
     const canvas = event.target;
 
     if (canvas && canvas.getContext && paintingStatus && isBrushStatus) {
         const ctx = canvas.getContext('2d');
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // ctx.fillStyle = changeColor();
         ctx.fillStyle = globalColor;
         ctx.beginPath();
         ctx.arc(event.offsetX, event.offsetY, globalSize/2, 50, Math.PI*2, true);
@@ -127,41 +142,89 @@ function mouserMoveHandler(event) {
     };
 }
 
-function mouseCLickHandler(event) {
-    event.preventDefault();
-
-    const canvas = event.target;
-
-    if (canvas && canvas.getContext && !isBrushStatus) {
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = globalColor;
-
-        if (globalFigure === 'square') {
-            ctx.fillRect(event.offsetX-(globalSize/2), event.offsetY-(globalSize/2), globalSize, globalSize);
-        }
-        else if (globalFigure === 'hexagon') {
-            let hexagonSize = globalSize/1.5;
-            ctx.beginPath();
-            ctx.moveTo(event.offsetX + hexagonSize * Math.cos(0), event.offsetY + hexagonSize * Math.sin(0));
-            
-            for (let side = 0; side < 7; side++) {
-                ctx.lineTo(event.offsetX + hexagonSize * Math.cos(side * 2 * Math.PI / 6), event.offsetY + hexagonSize * Math.sin(side * 2 * Math.PI / 6));
-            };
-            
-            ctx.fill();
-        }
-        else if (globalFigure === 'circle') {
-            ctx.beginPath();
-            ctx.arc(event.offsetX, event.offsetY, globalSize/2, 50, Math.PI*2, true);
-            ctx.fill();
-        }        
-    }
-}
-
 function mouseDownHandler(event) {
     paintingStatus = true;
 }
 
 function mouseUpHandler(event) {
     paintingStatus = false;
+}
+
+function mouserMoveHandlerCanvas2(event) {
+    const canvas1 = document.getElementById('canvas1')
+    const canvas2 = event.target;
+
+    if (canvas1 && canvas1.getContext && canvas2 && canvas2.getContext) {
+        setCurrentCoordinates(event.offsetX, event.offsetY);
+
+        if (!isBrushStatus) {
+            const ctx2 = canvas2.getContext('2d');
+
+            ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+            ctx2.fillStyle = globalColor;
+
+            if (globalFigure === 'square') {
+                ctx2.fillRect(event.offsetX-(globalSize/2), event.offsetY-(globalSize/2), globalSize, globalSize);
+            }
+            else if (globalFigure === 'hexagon') {
+                let hexagonSize = globalSize/1.5;
+                ctx2.beginPath();
+                ctx2.moveTo(event.offsetX + hexagonSize * Math.cos(0), event.offsetY + hexagonSize * Math.sin(0));
+                
+                for (let side = 0; side < 7; side++) {
+                    ctx2.lineTo(event.offsetX + hexagonSize * Math.cos(side * 2 * Math.PI / 6), event.offsetY + hexagonSize * Math.sin(side * 2 * Math.PI / 6));
+                };
+                
+                ctx2.fill();
+            }
+            else if (globalFigure === 'circle') {
+                ctx2.beginPath();
+                ctx2.arc(event.offsetX, event.offsetY, globalSize/2, 50, Math.PI*2, true);
+                ctx2.fill();
+            }     
+        }
+    }
+}
+
+function mouseCLickHandlerCanvas2(event) {
+    const canvas1 = document.getElementById('canvas1')
+    const canvas2 = event.target;
+
+    if (canvas1 && canvas1.getContext && canvas2 && canvas2.getContext) {
+        const ctx1 = canvas1.getContext('2d');
+
+        ctx1.fillStyle = globalColor;
+
+        if (globalFigure === 'square') {
+            ctx1.fillRect(event.offsetX-(globalSize/2), event.offsetY-(globalSize/2), globalSize, globalSize);
+        }
+        else if (globalFigure === 'hexagon') {
+            let hexagonSize = globalSize/1.5;
+            ctx1.beginPath();
+            ctx1.moveTo(event.offsetX + hexagonSize * Math.cos(0), event.offsetY + hexagonSize * Math.sin(0));
+            
+            for (let side = 0; side < 7; side++) {
+                ctx1.lineTo(event.offsetX + hexagonSize * Math.cos(side * 2 * Math.PI / 6), event.offsetY + hexagonSize * Math.sin(side * 2 * Math.PI / 6));
+            };
+            
+            ctx1.fill();
+        }
+        else if (globalFigure === 'circle') {
+            ctx1.beginPath();
+            ctx1.arc(event.offsetX, event.offsetY, globalSize/2, 50, Math.PI*2, true);
+            ctx1.fill();
+        }        
+    }
+}
+
+function colorValidation(string) {
+    let divIndicator = document.getElementById('currentColor');
+    divIndicator.style.backgroundColor = string;
+    if (divIndicator.style.backgroundColor === string) return true;
+    else return false;
+}
+
+function setDisplayStatusCanvas2() {
+    (isBrushStatus)? document.getElementById('canvas2').style.display = 'none':
+    document.getElementById('canvas2').style.display = 'block';
 }
