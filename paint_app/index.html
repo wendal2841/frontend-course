@@ -7,24 +7,37 @@
     <link href="styles/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="control-panel">
-<input type="text" id="colorField" value="black">
-<br>
-<button type="button" onclick="setColor()">Enter</button>
-<br>
-<input type="range" id="size" min="0" max="50" step="1" oninput="setSize()">
-<div class="dropdown-figures">
-    <button type="button">Figure</button>
-    <div class="dropdown-figures-content">
-        <div class="dropdown-figures-content-item" onclick="setFigure('square')">Square</div>
-        <div class="dropdown-figures-content-item" onclick="setFigure('circle')">Circle</div>
-        <div class="dropdown-figures-content-item" onclick="setFigure('hexagon')">Hexagon</div>
+    <div class="title">
+        <h1>Paint</h1>
     </div>
-</div>
-</div>
-<div class="canvas-wrapper">
-    <canvas id="canvas1" width="600px" height="500px"></canvas>
-    <!-- <canvas id="canvas2" width="600px" height="500px"></canvas> -->
-</div>
+    <div class="control-panel">
+        <input type="text" id="colorField" value="black">
+    <br>
+    <button type="button" onclick="changeColor()">Enter</button>
+    <br>
+    <input type="range" id="size" min="0" max="50" step="1" oninput="changeSize()"><br>
+    <div class="dropdown-figures">
+        <button type="button">Figure</button>
+        <div class="dropdown-figures-content">
+            <div class="dropdown-figures-content-item" onclick="changeFigure('square')">Square</div>
+            <div class="dropdown-figures-content-item" onclick="changeFigure('circle')">Circle</div>
+            <div class="dropdown-figures-content-item" onclick="changeFigure('hexagon')">Hexagon</div>
+        </div>
+    </div>
+    <div>
+        <input type="checkbox" name="Brush" id="isBrushStatus" onclick="changeIsBrushStatus()">Brush<br>
+    </div>
+
+    </div>
+    <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="canvas1" width="10px" height="10px"></canvas>
+        <!-- <canvas id="canvas2" width="600px" height="500px"></canvas> -->
+    </div>
+    <div class="current-status">
+        <div class="current-color" id="currentColor"></div>
+        <p id="currentX"></p>
+        <p id="currentY"></p>
+    </div>
+
 </body>
 </html>
