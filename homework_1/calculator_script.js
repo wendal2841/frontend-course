@@ -1,11 +1,18 @@
 'use strict';
 
+module.exports = {
+    createRPN: createRPN,
+    calculate: calculate,
+    stackBracketHandler: stackBracketHandler,
+};
+
 let makeSum = (stack) => {
     stack.push(+stack.pop() + +stack.pop())
 };
 
 let makeDif = (stack) => {
-    let [y, x] = [stack.pop(), stack.pop()];
+    let y = stack.pop();
+    let x = stack.pop();
     if(x === undefined) x = 0;
     stack.push(+x - +y);
 };
@@ -15,7 +22,8 @@ let makeMult = (stack) => {
 };
 
 let makeDivis = (stack) => {
-    let [y, x] = [stack.pop(), stack.pop()];
+    let y = stack.pop();
+    let x = stack.pop();
     (+y !== 0)? stack.push(+x / +y): stack.push('ERROR');
 };
 
@@ -44,7 +52,8 @@ let makePi = (stack) => {
 };
 
 let makePow = (stack) => {
-    let [y, x] = [stack.pop(), stack.pop()];
+    let y = stack.pop();
+    let x = stack.pop();
     stack.push(Math.pow(+x, +y));
 };
 
@@ -94,7 +103,7 @@ const OPERATIONS_PRIORITY = {
 };
 const RIGHT_ASSOCIATIVITY = ['√', '^', 'sin', 'cos', 'tan', 'ln', 'log', 'abs', '!'];
 
-let createRPN = (string) => {
+function createRPN(string) {
     let stack = [];
     let out = [];
     stack.last = () => stack[stack.length - 1];
@@ -124,7 +133,19 @@ let createRPN = (string) => {
     return out.concat(stack.reverse())
 };
 
-let calculate = (arr) => {
+function stackBracketHandler(stack) {
+    for (let i=0; i<stack.length; i++){
+        let tmp = stack.lastIndexOf('(');
+        if (tmp !== -1){
+            let x = stack.slice(tmp + 1);
+            stack.splice(tmp);
+            stack = stack.concat(x);
+        }
+    }
+    return stack
+}
+
+function calculate(arr) {
     let stack = [];
     arr.forEach((value) => {
         if(!(value in OPERATIONS_PRIORITY)) stack.push(value);
@@ -137,9 +158,6 @@ let calculate = (arr) => {
     else return "ERROR";
 };
 
-let str = '( 1 + 2 ) / 2 ^ 2';
-console.log(createRPN(str))
-console.log(calculate(createRPN(str)));
 
 let addResultToLocalStorage = (value) => {
     let now = new Date();
