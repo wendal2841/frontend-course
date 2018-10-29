@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <script src="../scripts/script.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+        mocha.setup('bdd');
+    </script>
+
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+        var assert = chai.assert;
+    </script>
+</head>
+
+<body>
+
+<script>
+    // describe("Painting features test", function() {
+    //     describe("Color validation", function() {
+    //         it("Color #231499 is valid", function() {
+    //             assert.isTrue(colorValidation('#231499'))
+    //         });
+    //         it("Color #521 is valid", function() {
+    //             assert.isTrue(colorValidation('#521'))
+    //         });
+    //         it("Color #fbdcea is valid", function() {
+    //             assert.isTrue(colorValidation('#fbdcea'))
+    //         });
+    //         it("Color #fae is valid", function() {
+    //             assert.isTrue(colorValidation('#fae'))
+    //         });
+    //         it("Color rgb(12, 255, 0) is valid", function() {
+    //             assert.isTrue(colorValidation('rgb(12, 255, 0)'))
+    //         });
+    //         it("Color rgb(12,255,0) is valid", function() {
+    //             assert.isTrue(colorValidation('rgb(12,255,0)'))
+    //         });
+    //         it("Color #2314 is NOT valid", function() {
+    //             assert.isFalse(colorValidation('#2314'))
+    //         });
+    //         it("Color #231499242 is NOT valid", function() {
+    //             assert.isFalse(colorValidation('#231499242'))
+    //         });
+    //         it("Color #FAEWC is NOT valid", function() {
+    //             assert.isFalse(colorValidation('#FAEWC'))
+    //         });
+    //         it("Color #AAAEE is NOT valid", function() {
+    //             assert.isFalse(colorValidation('#AAAEE'))
+    //         });
+    //         it("Color rgb(555,255,0) is NOT valid", function() {
+    //             assert.isFalse(colorValidation('rgb(555,255,0)'))
+    //         });
+    //     });
+
+    // });
+</script>
+
+<!-- в этом скрипте находятся спеки -->
+<script src="tests_script.js"></script>
+
+<!-- в элементе с id="mocha" будут результаты тестов -->
+<div id="mocha"></div>
+
+<!-- запустить тесты! -->
+<script>
+    mocha.run();
+</script>
+</body>
+
+</html>
