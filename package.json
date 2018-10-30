@@ -9,12 +9,14 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "jsdom": "^12.2.0",
-    "jsdom-global": "3.0.2",
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha paint_app/test/paintTest.test.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "localStorage": "^1.0.4"
+  }
 }

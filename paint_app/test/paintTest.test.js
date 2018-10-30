@@ -1,36 +1,72 @@
 'use strict';
 
-// require('jsdom-global')()
-const { assert } = require('chai');
-const app = require('../scripts/script');
-
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const { window } = new JSDOM(`<!DOCTYPE html>
+const ls = require('localStorage');
+const assert = require('chai').assert;
+const JSDOM = require("jsdom").JSDOM;
+const window = new JSDOM(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Painting</title>
+    <script src="scripts/script.js"></script>
+    <link href="styles/style.css" rel="stylesheet">
 </head>
 <body>
-<p>Hello world</p>
+    <div class="title" id="title">
+        <h1>Paint</h1>
+    </div>
+    <div class="control-panel">
+        <input type="text" id="colorField" value="black">
+    <br>
+    <button type="button" onclick="changeColor()">Enter</button>
+    <br>
+    <input type="range" id="size" min="0" max="50" step="1" oninput="changeSize()"><br>
+    <div class="dropdown-figures">
+        <button type="button">Figure</button>
+        <div class="dropdown-figures-content">
+            <div class="dropdown-figures-content-item" onclick="changeFigure('square')">Square</div>
+            <div class="dropdown-figures-content-item" onclick="changeFigure('circle')">Circle</div>
+            <div class="dropdown-figures-content-item" onclick="changeFigure('hexagon')">Hexagon</div>
+        </div>
+    </div>
+    <div>
+        <input type="checkbox" name="Brush" id="isBrushStatus" onclick="changeIsBrushStatus()">Brush<br>
+    </div>
+
+    </div>
+    <div class="canvas-wrapper" id="canvasWrapper">
+        <div style="position: relative;">
+            <canvas class="layer1" id="canvas1" width="100" height="100" 
+              style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <canvas class="layer2" id="canvas2" width="100" height="100" 
+              style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+           </div>
+    </div>
+    <div class="current-status">
+        <div class="current-color" id="currentColor"></div>
+        <p id="currentX"></p>
+        <p id="currentY"></p>
+    </div>
+
 </body>
-</html>`, {
-    url: "https://example.org/",
-    referrer: "https://example.com/",
-    contentType: "text/html",
-    includeNodeLocations: true,
-    storageQuota: 10000000
-  });
-const { document } = (new JSDOM(`...`)).window;
+</html>`).window;
 
+
+global.localStorage = ls;
 global.window = window;
-global.document = document;
-console.log(window.document.querySelector("p").textContent);
+global.document = window.document;
 
-// describe('Paint features test', function(){
-//     it('Set figure hexagon to localStorage and as global variable.', function(){
-//         let result = app.setFigure('hexagon');
-//         assert.equal(global.window.localStorage.getItem('figure'), 'hexagon');
-//     })
-// })
+
+console.log(document.querySelector("p").textContent);
+
+const app = require('../scripts/script');
+
+console.log(localStorage)
+
+
+describe('Paint features test', function(){
+    it('Set figure hexagon to localStorage and as global variable.', function(){
+        let result = app.default.setFigure('hexagon');
+        assert.equal(localStorage.getItem('figure'), 'hexagon');
+    })
+})
