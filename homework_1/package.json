@@ -1,0 +1,15 @@
+{
+  "name": "homework_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.test.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}

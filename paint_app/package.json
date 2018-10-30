@@ -1,0 +1,20 @@
+{
+  "name": "paint_app",
+  "version": "1.0.0",
+  "description": "Paint application",
+  "main": "./scripts",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jsdom": "^12.2.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
