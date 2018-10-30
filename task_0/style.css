@@ -1,0 +1,40 @@
+body{
+    background-color: #f2ffe6;
+}
+input:focus{
+    color: #1a1a1a;
+}
+
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: large;
+}
+
+input[type=submit]{
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+input[type=button]{
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #99ccff;
+    width: 50px;
+
+}
+
+.userArraySort{
+    position: fixed;
+    width:33%;
+    left: 33%;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #ff3300;
+}
+
+.userMessage{
+
+}
