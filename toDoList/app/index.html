@@ -11,17 +11,23 @@
     <div class="main-window">
         <div class="header">
             <h3>To Do List</h3>
-            <input type="button" value="Add" id="addTaskButton">
+            <input type="button" value="Add" id="addTaskButton" onclick="callFiedl()">
         </div>
-        <div class="task-list" id="taskList">
-            <div class="task-item" id="taskItem">Do todo list</div>
-        </div>
+        <ul class="task-list" id="taskList">
+            <li>Hit the gym</li>
+            <li class="checked">Pay bills</li>
+            <li>Meet George</li>
+            <li>Buy eggs</li>
+            <li>Read a book</li>
+            <li>Organize office</li>
+        </ul>
     </div>
     <div class="task-create-container" id="taskCreateContainer">
         <div class="wrap">
-            <textarea type="text" class="task-create-field" id="taskCreateField"></textarea>
+            <textarea type="text" class="task-create-field" id="taskCreateField" placeholder="Your task..."></textarea>
             <div>
-                <input type="button" value="Ok">
+                <input type="button" value="Ok" class="task-create-ok-button" onclick="callAddTask()">
+                <input type="button" value="Cancel" class="task-create-cancel-button" onclick="closeField()">
             </div>
         </div>
     </div>
