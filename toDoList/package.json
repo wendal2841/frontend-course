@@ -2,7 +2,7 @@
   "name": "todolist",
   "version": "1.0.0",
   "description": "To Do List application",
-  "main": "index.js",
+  "main": ".src/index.js",
   "scripts": {
     "test": "mocha test/index.test.js"
   },
@@ -11,7 +11,9 @@
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "jsdom": "^12.2.0",
-    "localStorage": "^1.0.4"
+    "jsdom": "^12.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
