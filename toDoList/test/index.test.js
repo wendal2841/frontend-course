@@ -9,7 +9,7 @@ const window = new JSDOM(`<!DOCTYPE html>
     <meta charset="UTF-8">
 <head>
         <title>To do list</title>
-        <script src="index.js"></script>
+        <script src="index.js" defer></script>
         <link href="index.css" rel="stylesheet">
 </head>
 <body>
@@ -19,11 +19,17 @@ const window = new JSDOM(`<!DOCTYPE html>
             <input type="button" value="Add" id="addTaskButton">
         </div>
         <div class="task-list" id="taskList">
-            <div class="task-item" id="taskItem1">Do todo list</div>
+            <div class="task-item">Do todo list</div>
         </div>
     </div>
-    <div class="create-task-field">
-        <input type="text" id="taskField">
+    <div class="task-create-container" id="taskCreateContainer">
+        <div class="wrap">
+            <textarea type="text" class="task-create-field" id="taskCreateField"></textarea>
+            <div>
+                <input type="button" value="Ok" class="task-create-ok-button">
+                <input type="button" value="Cancel" class="task-create-cancel-button">
+            </div>
+        </div>
     </div>
 </body>
 </html>`).window;
@@ -38,21 +44,21 @@ describe('To Do List tests.', function(){
     it('New task creation test.', function(){
         let text = 'New task text!';
         app.default.addTask(text);
-        let newTask = document.getElementById('taskItem2');
+        let newTask = document.getElementsByClassName('task-item')[1];
         assert.equal(newTask.textContent, 'New task text!');
     });
 
-    it('New task attributes check', function(){
-        let text = 'New task text!';
-        app.default.addTask(text);
-        let newTask = document.getElementById('taskItem2');
-        assert.equal(newTask.className, 'task-item');
-    });
-
     it('Delete button to task creation test', function(){
-        let task = document.getElementById('taskItem1');
+        let task = document.getElementsByClassName('task-item')[0];
         let deleteBtn = task.children[0];
         assert.equal(deleteBtn.className, 'delete-task');
+    });
+
+    it('Delete button to task using test', function(){
+        let task = document.getElementsByClassName('task-item')[0];
+        let deleteBtn = task.children[0];
+        deleteBtn.onclick();
+        assert.equal(task.style.display, 'none');
     });
 
 })
