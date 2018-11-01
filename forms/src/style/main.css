@@ -1,0 +1,11 @@
+.form {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.form .form-title {
+    position: absolute;
+    background-color: white;
+
+}
