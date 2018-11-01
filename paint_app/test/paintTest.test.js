@@ -65,8 +65,21 @@ console.log(localStorage)
 
 
 describe('Paint features test', function(){
-    it('Set figure hexagon to localStorage and as global variable.', function(){
+    it('Get default figure.', function() {
+        let result = app.default.getFigure();
+        assert.deepEqual(result, 'circle');
+    });
+
+    it('Set figure hexagon to localStorage.', function(){
         let result = app.default.setFigure('hexagon');
         assert.equal(localStorage.getItem('figure'), 'hexagon');
-    })
+    });
+
+    it('Get changed figure.', function(){
+        app.default.setFigure('hexagon');
+        let result = app.default.getFigure();
+        assert.equal(result, 'hexagon');
+    });
+
+
 })

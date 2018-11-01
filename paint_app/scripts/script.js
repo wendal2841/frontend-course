@@ -2,9 +2,9 @@ window.onload = function() {
     init();
 };
 
-let paintingStatus = false;
-
 function init() {    
+    const paintingStatus = false;
+
     const canvas1 = document.getElementById('canvas1');
     canvas1.width = document.getElementById('canvasWrapper').clientWidth;
     canvas1.height = document.getElementById('canvasWrapper').clientHeight;
@@ -217,5 +217,11 @@ function setDisplayStatusCanvas2() {
 
 
 module.exports.default = {
+    getSize: getSize,
+    setSize: setSize,
+    getColor: getColor,
+    getIsBrushStatus: getIsBrushStatus,
+    setIsBrushStatus: setIsBrushStatus,
+    getFigure: getFigure,
     setFigure: setFigure,
 }

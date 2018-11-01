@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "localStorage": "^1.0.4"
+    "localStorage": "^1.0.4",
+    "sinon": "^7.1.1"
   }
 }
