@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="./style/styles.min.css" />
 </head>
 <body>
     <div class="form">
@@ -16,33 +15,39 @@
         <div class="form-content">
             <ul>
                 <li>
-                    <div class="text-input">
-                        <span>Ф.И.О.<input type="text"></span>
+                    <div class="field-text-input">
+                        <span>Ф.И.О.</span>
+                        <input type="text">
                     </div>
                 </li>
                 <li>
-                    <div class="text-input">
-                        <span>E-mail<input type="email"></span>
+                    <div class="field-text-input">                        
+                        <span>E-mail</span>
+                        <input type="email">
                     </div>
                 </li>
                 <li>
-                    <div class="text-input">
-                        <span>Пароль<input type="password"></span>
+                    <div class="field-text-input">
+                        <span>Пароль</span>
+                        <input type="password">
                     </div>                    
                 </li>
                 <li>
-                    <div class="text-input">
-                        <span>Повтор пароля<input type="password"></span>
+                    <div class="field-text-input">
+                        <span>Повтор пароля</span>
+                        <input type="password">
                     </div>   
                 </li>
                 <li>
                     <div class="single-checkbox">
                         <input type="checkbox">
-                        <span>Accepting</span>
+                        <span>Я принимаю пользовательское соглашение</span>
                     </div>
                 </li>
             </ul>
-            <input type="button" value="Button">
+            <div class="footer">
+                <input type="button" value="Зарегистрироваться">
+            </div>
         </div>
     </div>
 </body>
