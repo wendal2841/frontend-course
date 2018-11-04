@@ -9,6 +9,7 @@
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
+    "gulp-clean-css": "^3.10.0",
     "jsdom": "^12.2.0",
     "less": "^3.8.1",
     "localStorage": "^1.0.4",
