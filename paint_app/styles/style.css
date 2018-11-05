@@ -10,6 +10,7 @@ body{
 }
 
 .control-panel {
+    display: flex;
     padding: 10px;
     margin: 10px 0;
     background-color: beige;
@@ -42,12 +43,36 @@ body{
     display: block;
 }
 
+.tab-controller {
+    display: flex;
+}
+
+.tab-panel {
+    display: flex;
+}
+
+.tab-wrapper {
+    width: 100px;
+    border: 1px solid black;
+}
+
+.tab-wrapper .tab {
+    width: 70%;
+}
+
 .canvas-wrapper{
+    position: relative;
     background-color: white;
     height: 600px;
 }
 
-.canvas-wrapper div .layer2 {
+.paint-tab {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+}
+
+.canvas-wrapper .layer2 {
     display: none;
 }
 

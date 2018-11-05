@@ -9,9 +9,13 @@
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
+    "gulp": "^3.9.1",
     "gulp-clean-css": "^3.10.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-less": "^4.0.1",
     "jsdom": "^12.2.0",
     "less": "^3.8.1",
+    "less-plugin-clean-css": "^1.5.1",
     "localStorage": "^1.0.4",
     "mocha": "^5.2.0",
     "sinon": "^7.1.1"
