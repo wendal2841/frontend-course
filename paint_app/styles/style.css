@@ -10,6 +10,7 @@ body{
 }
 
 .control-panel {
+    display: flex;
     padding: 10px;
     margin: 10px 0;
     background-color: beige;
@@ -43,11 +44,12 @@ body{
 }
 
 .canvas-wrapper{
+    position: relative;
     background-color: white;
     height: 600px;
 }
 
-.canvas-wrapper div .layer2 {
+.canvas-wrapper .layer2 {
     display: none;
 }
 
