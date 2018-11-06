@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Painting</title>
-    <link href="../styles/style.css" rel="stylesheet">
+    <link href="./css/paintStyle.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +21,9 @@
             </div>
 
             <div class="size-changer">
-                <input class="size-changer__scale" type="range" id="sizeScale" min="0" max="50" step="1" oninput="changeSize()">
+                <label for="sizeScale">
+                    <input class="size-changer__scale" type="range" id="sizeScale" min="0" max="50" step="1" oninput="changeSize()">
+                </label>
             </div>
 
             <div class="figure-changer figure-changer_default">
@@ -46,7 +48,7 @@
         <div class="tab-controller tab-controller_default" id="tabController">
             <div class="tab-aggregator tab-aggregator_default" id="tabPanel">
                 <div class="tab tab_default">
-                    <input type="button" class="tab__btn tab__btn_default">
+                    <input type="button" class="tab__btn tab__btn_default" value="Tab 1">
                     <span class="tab__closer tab__closer_default">X</span>
                 </div>
             </div>
@@ -56,7 +58,7 @@
         <div class="paint-panel paint-panel_default" id=paintPanel>
             <div class="canvas-wrapper canvas-wrapper_default">
                 <canvas class="canvas-wrapper__main-canvas canvas-wrapper__main-canvas_default"></canvas>
-                <canvas class="canvas-wrapper__second-canvas canvas-wrapper__main-canvas_default"></canvas>
+                <canvas class="canvas-wrapper__second-canvas canvas-wrapper__second-canvas_default canvas-wrapper__second-canvas_default_active"></canvas>
             </div>
         </div>
 
@@ -69,7 +71,7 @@
         </div>
     </div>
 
-    <script src="../scripts/paintFactory.js"></script>
-    <script src="../scripts/script.js"></script>
+    <script src="../src/scripts/paintFactory.js"></script>
+    <script src="../src/scripts/script.js"></script>
 </body>
 </html>
