@@ -3,7 +3,7 @@
 var taskList = document.getElementById("taskList");
 var taskCreateContainer = document.getElementById("taskCreateContainer");
 
-function callFiedl() {
+function callField() {
 	taskCreateContainer.style.display = "flex";
 }
 

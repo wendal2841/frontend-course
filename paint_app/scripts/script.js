@@ -67,8 +67,7 @@ function getFigure() {
 
 function getIsBrushStatus() {
     let status = localStorage.getItem('isBrushStatus');
-    if (status === ('true' || true)) return true
-    else return false;
+    return status === ('true' || true);
 }
 
 function setColor(color) {
@@ -142,11 +141,12 @@ function setDisplayStatusCanvas2() {
 
 function PaintTab(color, figure, size, isBrushStatus, name) {
     var wrapper = document.createElement('div');
+    wrapper.style.width = "200px";
+    wrapper.style.height = "300px";
     var canvas1 = document.createElement("canvas");
     var canvas2 = document.createElement("canvas");
 
-    wrapper.appendChild(canvas1);
-    wrapper.appendChild(canvas2);
+
 
     wrapper.id = "paint"+name;
     wrapper.className = 'paint-tab';
@@ -157,26 +157,13 @@ function PaintTab(color, figure, size, isBrushStatus, name) {
     this.size = size;
     this.isBrushStatus = isBrushStatus;
 
-    canvas1.width = canvas1.parentElement.clientWidth;
-    canvas1.height = canvas1.parentElement.clientHeight;
-
-    canvas2.width = canvas2.parentElement.clientWidth;
-    canvas2.height = canvas2.parentElement.clientHeight;
-
     if (this.isBrushStatus) canvas2.style.display = 'none';
 
     this.getWrapper = function() {
         return wrapper;
     };
 
-    canvas1.addEventListener('mousemove', mouserMoveHandler);
-    canvas1.addEventListener('mousedown', mouseDownHandler);
-    canvas1.addEventListener('mouseup', mouseUpHandler);
-
-    canvas2.addEventListener('mousemove', mouserMoveHandler);
-    canvas2.addEventListener('click', mouseCLickHandler);
-
-    var paintingStatus;
+    var paintingStatus = true;
 
     function mouserMoveHandler(event) {
         var canvas = event.target;
@@ -264,10 +251,26 @@ function PaintTab(color, figure, size, isBrushStatus, name) {
                     ctx.beginPath();
                     ctx.arc(event.offsetX, event.offsetY, this.size/2, 50, Math.PI*2, true);
                     ctx.fill();
-                };  
+                };
             }
         }
     };
+
+    canvas1.addEventListener('mousemove', mouserMoveHandler);
+    canvas1.addEventListener('mousedown', mouseDownHandler);
+    canvas1.addEventListener('mouseup', mouseUpHandler);
+
+    canvas2.addEventListener('mousemove', mouserMoveHandler);
+    canvas2.addEventListener('click', mouseCLickHandler);
+
+    wrapper.appendChild(canvas1);
+    wrapper.appendChild(canvas2);
+
+    canvas1.width = parseInt(canvas1.parentElement.style.width);
+    canvas1.height = parseInt(canvas1.parentElement.style.height);
+
+    canvas2.width = parseInt(canvas2.parentElement.style.width);
+    canvas2.height = parseInt(canvas2.parentElement.style.height);
 
     this.changeIsBrushStatus = function(status) {
         this.isBrushStatus = status;
