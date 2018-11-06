@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Painting</title>
-    <link href="../styles/style.css" rel="stylesheet">
+    <link href="./css/paintStyle.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,6 +14,7 @@
 
         <div class="paint-controller paint-controller_default">
             <div class="color-changer color-changer_default">
+                <div class="color-changer__indicator color-changer__indicator_default"></div>
                 <input type="text" class="color-changer__input color-changer__input_default" id="colorField">
                 <button type="button" class="color-changer__accept-btn color-changer__accept-btn_default" onclick="changeColor()">
                     Enter
@@ -21,7 +22,9 @@
             </div>
 
             <div class="size-changer">
-                <input class="size-changer__scale" type="range" id="sizeScale" min="0" max="50" step="1" oninput="changeSize()">
+                <label for="sizeScale">
+                    <input class="size-changer__scale" type="range" id="sizeScale" min="0" max="50" step="1" oninput="changeSize()">
+                </label>
             </div>
 
             <div class="figure-changer figure-changer_default">
@@ -44,9 +47,9 @@
 
 
         <div class="tab-controller tab-controller_default" id="tabController">
-            <div class="tab-aggregator tab-aggregator_default" id="tabPanel">
+            <div class="tab-aggregator tab-aggregator_default" id="tabAggregator">
                 <div class="tab tab_default">
-                    <input type="button" class="tab__btn tab__btn_default">
+                    <input type="button" class="tab__btn tab__btn_default" value="Tab 1">
                     <span class="tab__closer tab__closer_default">X</span>
                 </div>
             </div>
@@ -56,7 +59,7 @@
         <div class="paint-panel paint-panel_default" id=paintPanel>
             <div class="canvas-wrapper canvas-wrapper_default">
                 <canvas class="canvas-wrapper__main-canvas canvas-wrapper__main-canvas_default"></canvas>
-                <canvas class="canvas-wrapper__second-canvas canvas-wrapper__main-canvas_default"></canvas>
+                <canvas class="canvas-wrapper__second-canvas canvas-wrapper__second-canvas_default canvas-wrapper__second-canvas_default_active"></canvas>
             </div>
         </div>
 
@@ -68,8 +71,7 @@
             </div>
         </div>
     </div>
-
-    <script src="../scripts/paintFactory.js"></script>
-    <script src="../scripts/script.js"></script>
+    <!--<script src="../src/script/script.js"></script>-->
+    <script src="../src/script/paintFactory.js"></script>
 </body>
 </html>

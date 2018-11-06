@@ -1,3 +1,155 @@
-.body {
-  background: black;
+@border: 1px solid black;
+@box-shadow: 0 0 10px rgba(0,0,0,0.3);
+@border-top-radius: 10px 10px 0 0;
+@main-color: #80bfff;
+
+
+.main-window {
+  &_default {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: @border;
+    font-family: sans-serif;
+    width: 80%;
+    height: 600px;
+    box-shadow: @box-shadow;
+  }
+};
+
+.header{
+  &_default{
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px;
+    background-color: @main-color
+  };
+
+  &__title{
+    color:white;
+    font-size: 26px;
+  };
+};
+
+.paint-controller{
+  &_default{
+    position: relative;
+    border: @border;
+    box-shadow: @box-shadow;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+};
+
+.color-changer{
+  &_default{
+    display: flex;
+    align-content: center;
+  };
+
+  &__indicator{
+    &_default{
+      border-radius: 15px;
+      background-color: #000;
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.tab-controller {
+  &_default {
+    display: flex;
+    border: @border;
+    border-bottom: none;
+    padding-top: 3px;
+    background-color: @main-color;
+  }
+};
+
+.tab-aggregator{
+  &_default{
+    display: flex;
+  }
+}
+
+.tab{
+  &_default{
+    background-color: #aaa;
+    border: @border;
+    border-bottom: none;
+    border-radius: @border-top-radius;
+    padding: 5px;
+    margin: 3px 1px 0px 3px;
+
+    &:hover{
+      background-color: #eee;
+    };
+  };
+
+  &_active{
+    background-color: white;
+    border: @border;
+    border-bottom: none;
+    border-radius: @border-top-radius;
+    padding: 5px;
+    margin: 3px 1px 0px 3px;
+  }
+
+  &__btn{
+    &_default{
+      background-color: rgba(255, 255, 255, 0);
+      color: #000;
+      border: none;
+
+    };
+  }
+};
+
+.create-tab-btn{
+  &_default{
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.2s;
+    border: none;
+    margin: 3px;
+    border-radius: 8px;
+  };
+
+  &:hover{
+    background-color: #eee;
+  }
+}
+
+.paint-panel{
+  &_default{
+    height: 100%;
+  }
+};
+
+.canvas-wrapper{
+  &_default{
+    height: 100%;
+  };
+
+  &__main-canvas{
+    &_default{
+      position: absolute;
+    }
+  };
+
+  &__second-canvas{
+    &_default{
+      position: relative;
+      display: none;
+      left: 0;
+      top: 0;
+    }
+  }
+};
+
+.footer{
+  &_default{
+    background-color: @main-color;
+  }
 }
