@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Painting</title>
+    <link href="../styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-window main-window_default">
+        <div class="header header_default" id="header">
+            <div class="header__title">Paint</div>
+        </div>
+
+        <div class="paint-controller paint-controller_default">
+            <div class="color-changer color-changer_default">
+                <input type="text" class="color-changer__input color-changer__input_default" id="colorField">
+                <button type="button" class="color-changer__accept-btn color-changer__accept-btn_default" onclick="changeColor()">
+                    Enter
+                </button>
+            </div>
+
+            <div class="size-changer">
+                <input class="size-changer__scale" type="range" id="sizeScale" min="0" max="50" step="1" oninput="changeSize()">
+            </div>
+
+            <div class="figure-changer figure-changer_default">
+                <div class="figure-changer__menu-wrap figure-changer__menu-wrap_default">
+                    <select class="figure-changer__menu figure-changer__menu_default">
+                        <option>Circle</option>
+                        <option>Square</option>
+                        <option>Hexagon</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="brush-changer brush-changer_default">
+                <label>
+                    <input type="checkbox" name="Brush" class="brush-changer__checkbox brush-changer_default" id="isBrushStatus" onclick="changeIsBrushStatus()">
+                    Brush
+                </label>
+            </div>
+        </div>
+
+
+        <div class="tab-controller tab-controller_default" id="tabController">
+            <div class="tab-aggregator tab-aggregator_default" id="tabPanel">
+                <div class="tab tab_default">
+                    <input type="button" class="tab__btn tab__btn_default">
+                    <span class="tab__closer tab__closer_default">X</span>
+                </div>
+            </div>
+            <input type="button" class="create-tab-btn create-tab-btn_default" value="+" id="addTabButton">
+        </div>
+
+        <div class="paint-panel paint-panel_default" id=paintPanel>
+            <div class="canvas-wrapper canvas-wrapper_default">
+                <canvas class="canvas-wrapper__main-canvas canvas-wrapper__main-canvas_default"></canvas>
+                <canvas class="canvas-wrapper__second-canvas canvas-wrapper__main-canvas_default"></canvas>
+            </div>
+        </div>
+
+        <div class="footer footer_default">
+            <div class="current-settings current-settings_default">
+                <div class="current-settings__color current-settings__color_default" id="currentColor"></div>
+                <p class="current-settings__x current-settings__x_default" id="currentX"></p>
+                <p class="current-settings__y current-settings__y_default" id="currentY"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/paintFactory.js"></script>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
