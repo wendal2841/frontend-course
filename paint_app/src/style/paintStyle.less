@@ -62,8 +62,8 @@
   &_default {
     display: flex;
     border: @border;
+    height: 40px;
     border-bottom: none;
-    padding-top: 3px;
     background-color: @main-color;
   }
 };
@@ -130,6 +130,11 @@
 .canvas-wrapper{
   &_default{
     height: 100%;
+    display: none;
+  };
+
+  &_active{
+    display: block;
   };
 
   &__main-canvas{

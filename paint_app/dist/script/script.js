@@ -3,9 +3,26 @@ window.onload = function() {
 };
 
 function init() {    
-    window.paintFactory = new PaintTabFactory();
+    window.manager = new TabManager();
+    window.colorIndicator = document.getElementById('colorIndicator');
+    window.colorField = document.getElementById('colorField');
+    window.colorChangeBtn = document.getElementById('colorChangeBtn');
+    window.sizeScale = document.getElementById('sizeScale');
+    window.figureMenu = document.getElementById('figureMenu');
+    window.isBrushStatus = document.getElementById('isBrushStatus');
+    window.addTabButton = document.getElementById('addTabButton');
 
-    var addTabButton = document.getElementById('addTabButton');
+    window.currentSettings = {
+        color: black,
+        size: 25,
+        isBrushStatus: true,
+        figure: 'Circle'
+    };
+
+    colorChangeBtn.addEventListener('click', changeColor);
+    sizeScale.addEventListener('oninput', changeSize);
+    figureMenu.addEventListener('onchange', changeFigure);
+    isBrushStatus.addEventListener('onclick', changeIsBrushStatus);
     addTabButton.addEventListener('click', addTab);
 
     setColor(getColor());
@@ -14,43 +31,10 @@ function init() {
     setIsBrushStatus(getIsBrushStatus());
 }
 
-function createTabElement(name) {
-    var div = document.createElement("div");
-    div.className = 'tab-wrapper';
-    var input = document.createElement("input");
-    input.type = 'button';
-    input.className = 'tab';
-    input.value = name;
-    input.id = name;
-    div.appendChild(input);
-    var span = document.createElement("span");
-    span.appendChild(document.createTextNode("\u00D7"));
-    div.appendChild(span);
-    document.getElementById("tabPanel").appendChild(div)
-}
-
 function addTab() {
-    var wrapper = paintFactory.create(getColor(), getFigure(), getSize(), getIsBrushStatus());
-    var paintPanel = document.getElementById("paintPanel");
-    paintPanel.appendChild(wrapper.getWrapper());
-    createTabElement(wrapper.name);
+    manager.setCurrentSettings(currentSettings);
+    manager.addTab();
 };
-
-function activateTab(){
-    var tab = event.target;
-    var wrapperId = "paint" + tab.id;
-    var paintPanel = document.getElementById("paintPanel");
-
-    paintPanel.children.forEach(element => {
-        if(element.id !== wrapperId) element.style.display = 'none'
-        else element.style.display = 'block';
-    });
-
-    tab.style.backgroundColor = 'yellow';
-    
-}
-
-
 
 
 function getColor() {

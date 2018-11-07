@@ -59,7 +59,7 @@ global.document = window.document;
 
 console.log(document.querySelector("p").textContent);
 
-const app = require('../src/script/script');
+const app = require('../dist/script/script');
 
 console.log(localStorage)
 
