@@ -13,7 +13,7 @@ function init() {
     window.addTabButton = document.getElementById('addTabButton');
 
     window.currentSettings = {
-        color: black,
+        color: "black",
         size: 25,
         isBrushStatus: true,
         figure: 'Circle'

@@ -33,7 +33,7 @@ class TabManager{
             this.unActivateTab(tab);
         });
         let currentCount = this.tabArray.length;
-        let tab = PaintTab({color: this.currentSettings.color,
+        let tab = new PaintTab({color: this.currentSettings.color,
                             brushSize: this.currentSettings.size,
                             isBrushStatus: this.currentSettings.isBrushStatus,
                             figure: this.currentSettings.figure,
