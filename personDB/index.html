@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Persons</title>
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="./node_modules/idb/lib/idb.js"></script>-->
+    <script src="dbConnection.js"></script>
+    <script src="personDAO.js"></script>
+    <script src="addRaw.js"></script>
 </head>
 <body>
-$END$
+<div class="main-block">
+    <div class="inputs-block">
+        <label for="inputId">Id<input type="number" id="inputId"></label>
+        <label for="inputFirstName">First Name<input type="text" id="inputFirstName"></label>
+        <label for="inputLastName">Last Name<input type="text" id="inputLastName"></label>
+        <label for="inputAge">Age<input type="text" id="inputAge"></label>
+    </div>
+    <div class="error-block">
+        <p id="error">Some Error!</p>
+    </div>
+    <div class="table-block">
+        <div class="table-block__header">
+            <div class="table-block__header-id">ID</div>
+            <div class="table-block__header-first-name">FIRST NAME</div>
+            <div class="table-block__header-last-name">LAST NAME</div>
+            <div class="table-block__header-age">AGE</div>
+        </div>
+        <div class="table-block__body" id="tableBody">
+            <div class="table-block__raw">
+                <div class="table-block__raw-id">1</div>
+                <div class="table-block__raw-first-name">Alexandr</div>
+                <div class="table-block__raw-last-name">Gruzinskiy</div>
+                <div class="table-block__raw-age">21</div>
+            </div>
+        </div>
+    </div>
+    <div class="crud-block">
+        <button class="control-btn">Create</button>
+        <button class="control-btn">Read</button>
+        <button class="control-btn">Update</button>
+        <button class="control-btn">Delete</button>
+    </div>
+    <div class="storage-block">
+        <button class="storage-btn">IndexDB</button>
+        <button class="storage-btn">Web SQL</button>
+        <button class="storage-btn">Local Storage</button>
+        <button class="storage-btn">Session Storage</button>
+    </div>
+</div>
 </body>
 </html>

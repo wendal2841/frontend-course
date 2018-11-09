@@ -1,0 +1,49 @@
+.main-block{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    border: 1px solid black;
+}
+.error-block{
+    color:red;
+}
+
+.inputs-block{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-block{
+    display: flex;
+    flex-direction: column;
+}
+
+.table-block .table-block__header {
+    display: flex;
+    justify-content: space-between;
+}
+.table-block__body{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.table-block .table-block__body .table-block__raw {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.crud-block{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.storage-block{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
