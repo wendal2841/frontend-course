@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Persons</title>
     <link rel="stylesheet" href="style.css">
-    <!--<script src="./node_modules/idb/lib/idb.js"></script>-->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
     <script src="dbConnection.js"></script>
     <script src="personDAO.js"></script>
     <script src="addRaw.js"></script>
@@ -12,13 +12,13 @@
 <body>
 <div class="main-block">
     <div class="inputs-block">
-        <label for="inputId">Id<input type="number" id="inputId"></label>
-        <label for="inputFirstName">First Name<input type="text" id="inputFirstName"></label>
-        <label for="inputLastName">Last Name<input type="text" id="inputLastName"></label>
-        <label for="inputAge">Age<input type="text" id="inputAge"></label>
+        <label for="inputId">Id<input class="inputs-block__item" type="number" id="inputId"></label>
+        <label for="inputFirstName">First Name<input class="inputs-block__item" type="text" id="inputFirstName"></label>
+        <label for="inputLastName">Last Name<input class="inputs-block__item" type="text" id="inputLastName"></label>
+        <label for="inputAge">Age<input class="inputs-block__item" type="number" id="inputAge"></label>
     </div>
     <div class="error-block">
-        <p id="error">Some Error!</p>
+        <p id="error"></p>
     </div>
     <div class="table-block">
         <div class="table-block__header">
@@ -28,25 +28,19 @@
             <div class="table-block__header-age">AGE</div>
         </div>
         <div class="table-block__body" id="tableBody">
-            <div class="table-block__raw">
-                <div class="table-block__raw-id">1</div>
-                <div class="table-block__raw-first-name">Alexandr</div>
-                <div class="table-block__raw-last-name">Gruzinskiy</div>
-                <div class="table-block__raw-age">21</div>
-            </div>
         </div>
     </div>
     <div class="crud-block">
-        <button class="control-btn">Create</button>
-        <button class="control-btn">Read</button>
-        <button class="control-btn">Update</button>
-        <button class="control-btn">Delete</button>
+        <button class="control-btn" id="createBtn">Create</button>
+        <button class="control-btn" id="readBtn">Read</button>
+        <button class="control-btn" id="updateBtn">Update</button>
+        <button class="control-btn" id="deleteBtn">Delete</button>
     </div>
     <div class="storage-block">
-        <button class="storage-btn">IndexDB</button>
-        <button class="storage-btn">Web SQL</button>
-        <button class="storage-btn">Local Storage</button>
-        <button class="storage-btn">Session Storage</button>
+        <button class="storage-btn" id="indexBtn">IndexDB</button>
+        <button class="storage-btn" id="webBtn">Web SQL</button>
+        <button class="storage-btn" id="lsBtn">Local Storage</button>
+        <button class="storage-btn" id="wsBtn">Window Storage</button>
     </div>
 </div>
 </body>
