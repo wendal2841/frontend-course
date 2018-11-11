@@ -1,13 +1,14 @@
-//...IndexedDB code
-//содание БД
-var dbPromise = idb.open('test-db6', 1, function(upgradeDb) {
-    //создание таблицы
-    if (!upgradeDb.objectStoreNames.contains('store')) {
-        var usersOS = upgradeDb.createObjectStore('store', {keyPath: 'id', autoIncrement: true});
+const dbName = "PersonsDB";
+const dbVersion = "0.1";
+const dbDisplayName = "PersonsDB";
+const dbMaxSize = 256;
 
-        usersOS.createIndex('id', 'id', {unique: true});
-        usersOS.createIndex('fname', 'fname', {unique: false});
-        usersOS.createIndex('lname', 'lname', {unique: false});
-        usersOS.createIndex('age', 'age', {unique: false});
-    }
+const db = openDatabase(dbName, dbVersion, dbDisplayName, dbMaxSize);
+
+db.transaction(function (tx) {
+    tx.executeSql("CREATE TABLE IF NOT EXISTS persons " +
+    "(id INTEGER NOT NULL PRIMARY KEY, " +
+    "firstName TEXT NOT NULL, " +
+    "lastName TEXT NOT NULL, " +
+    "age INTEGER NOT NULL);")
 });

@@ -8,15 +8,15 @@ gulp.task('less', function() {
     gulp.src('./src/style/**/*.less')
         .pipe(less())
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('./forms/dist/css'));
+        .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('watch', function() {
     gulp.watch([
-        '/dist/*.html',
-        '/dist/css/*.css'
+        './dist/*.html',
+        './dist/css/*.css'
     ]).on('change', browserSync.reload);
-    
+
     gulp.watch('./src/style/**/*.less', ['less']);
 });
 
